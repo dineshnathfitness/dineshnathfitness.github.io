@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinesh Nath — Fat Loss & Muscle Gain Coach</title>
+<meta name="description" content="Certified fitness coach (GGFI & NCVET) helping working professionals, beginners and women build sustainable fat loss and muscle gain results. Online & offline coaching.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15140F;
+    --paper:#EDEAE0;
+    --paper-dim:#E2DED2;
+    --iron:#5B5A52;
+    --iron-light:#8A8879;
+    --ember:#E5401C;
+    --ember-dark:#B92E10;
+    --chalk:#D8E85C;
+    --line: rgba(21,20,15,0.12);
+    --radius: 2px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  .display{font-family:'Anton',sans-serif; text-transform:uppercase; letter-spacing:0.01em; font-weight:400;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* ============ NAV ============ */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,234,224,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:72px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Anton',sans-serif; font-size:20px; letter-spacing:0.02em;
+  }
+  .brand .plate{
+    width:26px;height:26px;border-radius:50%;
+    border:4px solid var(--ink);
+    display:inline-block;
+    position:relative;
+  }
+  .brand .plate::after{
+    content:'';position:absolute;inset:5px;border-radius:50%;background:var(--ember);
+  }
+  nav .cta-small{
+    background:var(--ink); color:var(--paper);
+    font-size:13px; font-weight:600; letter-spacing:0.03em;
+    padding:11px 20px; border-radius:var(--radius);
+    text-transform:uppercase;
+    transition:background 0.2s ease, transform 0.15s ease;
+  }
+  nav .cta-small:hover{background:var(--ember); transform:translateY(-1px);}
+  nav .cta-small:focus-visible{outline:2px solid var(--ember); outline-offset:2px;}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    padding:96px 0 88px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .plates-decor{
+    position:absolute; top:-140px; right:-160px;
+    width:520px; height:520px;
+    pointer-events:none;
+    z-index:0;
+  }
+  .plates-decor .ring{
+    position:absolute; border-radius:50%;
+    border:2px solid var(--iron);
+    opacity:0.35;
+  }
+  .plates-decor .ring:nth-child(1){width:520px;height:520px; top:0; left:0;}
+  .plates-decor .ring:nth-child(2){width:390px;height:390px; top:65px; left:65px; border-color:var(--ember); opacity:0.45;}
+  .plates-decor .ring:nth-child(3){width:260px;height:260px; top:130px; left:130px;}
+  .plates-decor .ring:nth-child(4){width:130px;height:130px; top:195px; left:195px; border-color:var(--ember); opacity:0.6;}
+
+  .hero-inner{position:relative; z-index:1; max-width:760px;}
+
+  .eyebrow-row{
+    display:flex; flex-wrap:wrap; gap:10px;
+    margin-bottom:28px;
+  }
+  .badge{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; font-weight:600; letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:7px 12px;
+    border:1px solid var(--iron-light);
+    border-radius:var(--radius);
+    color:var(--iron);
+    background:rgba(255,255,255,0.35);
+  }
+
+  h1.hero-headline{
+    font-size:clamp(44px, 7.5vw, 88px);
+    line-height:0.98;
+    margin-bottom:26px;
+  }
+  h1.hero-headline .accent{color:var(--ember);}
+
+  .hero-sub{
+    font-size:19px;
+    line-height:1.6;
+    color:var(--iron);
+    max-width:520px;
+    margin-bottom:38px;
+    font-weight:500;
+  }
+
+  .cta-row{display:flex; align-items:center; gap:20px; flex-wrap:wrap;}
+
+  .cta-primary{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--ember); color:var(--paper);
+    font-weight:700; font-size:16px; letter-spacing:0.01em;
+    padding:18px 30px;
+    border-radius:var(--radius);
+    box-shadow:4px 4px 0 var(--ink);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-primary:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink);}
+  .cta-primary:focus-visible{outline:3px solid var(--ink); outline-offset:3px;}
+  .cta-primary svg{width:20px;height:20px;flex-shrink:0;}
+
+  .cta-note{font-size:14px; color:var(--iron); font-family:'IBM Plex Mono',monospace;}
+
+  /* ============ STATS ============ */
+  .stats{
+    border-bottom:1px solid var(--line);
+    background:var(--paper-dim);
+  }
+  .stats .wrap{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    padding:40px 28px;
+  }
+  .stat{text-align:left; padding:0 20px; border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none; padding-left:0;}
+  .stat-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:clamp(32px,4vw,48px);
+    font-weight:600;
+    color:var(--ink);
+    display:flex; align-items:baseline; gap:2px;
+  }
+  .stat-num .suffix{color:var(--ember);}
+  .stat-label{
+    font-size:13px; color:var(--iron); text-transform:uppercase;
+    letter-spacing:0.04em; margin-top:6px; font-weight:600;
+  }
+
+  /* ============ SECTION GENERIC ============ */
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .kicker{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px; font-weight:600; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ember);
+    margin-bottom:14px;
+  }
+  h2.section-title{
+    font-size:clamp(30px,4vw,46px);
+    line-height:1.05;
+  }
+  .section-desc{
+    font-size:17px; color:var(--iron); margin-top:16px; line-height:1.6;
+  }
+
+  /* ============ ABOUT ============ */
+  .about{border-bottom:1px solid var(--line);}
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;
+  }
+  .about-copy p{
+    font-size:17px; line-height:1.75; color:var(--iron); margin-bottom:18px;
+  }
+  .about-copy strong{color:var(--ink);}
+  .cred-list{
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:rgba(255,255,255,0.4);
+  }
+  .cred-item{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 22px; border-bottom:1px solid var(--line);
+    font-size:15px;
+  }
+  .cred-item:last-child{border-bottom:none;}
+  .cred-item .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:12px;
+    color:var(--ember); font-weight:600;
+  }
+
+  /* ============ WHO I COACH ============ */
+  .who{background:var(--paper-dim); border-bottom:1px solid var(--line);}
+  .who-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .who-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:30px 26px;
+    transition:transform 0.2s ease, border-color 0.2s ease;
+  }
+  .who-card:hover{transform:translateY(-4px); border-color:var(--ember);}
+  .who-icon{
+    width:44px;height:44px; border-radius:50%;
+    background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:15px;
+    margin-bottom:20px;
+  }
+  .who-card h3{font-size:19px; margin-bottom:10px; font-weight:700;}
+  .who-card p{font-size:15px; color:var(--iron); line-height:1.6;}
+
+  /* ============ OFFER ============ */
+  .offer-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; border:1px solid var(--line); background:var(--line);}
+  .offer-item{background:var(--paper); padding:34px; }
+  .offer-num{font-family:'IBM Plex Mono',monospace; color:var(--ember); font-size:14px; font-weight:600; margin-bottom:14px;}
+  .offer-item h3{font-size:20px; margin-bottom:10px; font-weight:700;}
+  .offer-item p{font-size:15px; color:var(--iron); line-height:1.6;}
+
+  /* ============ PROCESS ============ */
+  .process{background:var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .process-list{border-top:1px solid var(--line);}
+  .process-row{
+    display:grid; grid-template-columns:80px 1fr;
+    padding:28px 0; border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .process-row .step-num{
+    font-family:'Anton',sans-serif; font-size:32px; color:var(--ember);
+  }
+  .process-row h3{font-size:19px; margin-bottom:6px; font-weight:700;}
+  .process-row p{font-size:15px; color:var(--iron); max-width:520px;}
+
+  /* ============ TRANSFORMATIONS ============ */
+  .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .gallery-card{
+    border:1px dashed var(--iron-light); border-radius:var(--radius);
+    background:rgba(255,255,255,0.3);
+    aspect-ratio:3/4;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:20px; gap:8px;
+  }
+  .gallery-card .plus{font-size:28px; color:var(--iron-light); font-family:'IBM Plex Mono',monospace;}
+  .gallery-card .placeholder-label{font-size:13px; color:var(--iron); font-family:'IBM Plex Mono',monospace;}
+  .gallery-note{
+    margin-top:24px; font-size:14px; color:var(--iron);
+    font-family:'IBM Plex Mono',monospace;
+    padding:14px 18px; border-left:3px solid var(--ember); background:var(--paper-dim);
+  }
+
+  /* ============ CTA BAND ============ */
+  .cta-band{
+    background:var(--ink); color:var(--paper);
+    padding:96px 0; text-align:center;
+  }
+  .cta-band h2{
+    font-size:clamp(34px,6vw,64px); line-height:1.02; margin-bottom:20px;
+  }
+  .cta-band .accent{color:var(--chalk);}
+  .cta-band p{font-size:17px; color:#B9B7AA; max-width:480px; margin:0 auto 36px;}
+  .cta-band .cta-primary{box-shadow:4px 4px 0 var(--paper);}
+  .cta-band .cta-primary:hover{box-shadow:6px 6px 0 var(--paper);}
+
+  /* ============ FOOTER ============ */
+  footer{padding:48px 0; background:var(--paper);}
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  footer .foot-brand{font-family:'Anton',sans-serif; font-size:16px;}
+  footer .foot-meta{font-size:13px; color:var(--iron); font-family:'IBM Plex Mono',monospace;}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 860px){
+    .about-grid{grid-template-columns:1fr; gap:40px;}
+    .who-grid{grid-template-columns:1fr;}
+    .offer-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .stats .wrap{grid-template-columns:1fr; gap:20px;}
+    .stat{border-left:none; padding-left:0; border-bottom:1px solid var(--line); padding-bottom:20px;}
+    .stat:last-child{border-bottom:none;}
+    .plates-decor{opacity:0.5; width:360px; height:360px; top:-100px; right:-140px;}
+    .plates-decor .ring:nth-child(1){width:360px;height:360px;}
+    .plates-decor .ring:nth-child(2){width:270px;height:270px; top:45px; left:45px;}
+    .plates-decor .ring:nth-child(3){width:180px;height:180px; top:90px; left:90px;}
+    .plates-decor .ring:nth-child(4){width:90px;height:90px; top:135px; left:135px;}
+  }
+  @media (max-width: 560px){
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    section{padding:64px 0;}
+    .hero{padding:64px 0 56px;}
+    nav .brand span.brand-text{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="plate"></span><span class="brand-text">DINESH&nbsp;NATH</span></div>
+    <a class="cta-small" href="https://wa.me/919885513807?text=TRANSFORM" target="_blank" rel="noopener">DM Transform</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="plates-decor" aria-hidden="true">
+    <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow-row">
+      <span class="badge">GGFI Certified</span>
+      <span class="badge">NCVET Certified</span>
+      <span class="badge">Certified Nutritionist</span>
+      <span class="badge">Online &amp; Offline</span>
+    </div>
+    <h1 class="hero-headline display">300+ TRANSFORMATIONS.<br><span class="accent">ZERO SHORTCUTS.</span></h1>
+    <p class="hero-sub">Science-based fat loss, muscle gain and strength coaching for working professionals, beginners and women — built around your actual schedule, not an extreme diet.</p>
+    <div class="cta-row">
+      <a class="cta-primary" href="https://wa.me/919885513807?text=TRANSFORM" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.44 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35.19 0 .38.001.55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.77 1.27 1.66 2.05 1.14 1.02 2.11 1.34 2.4 1.49.29.15.46.13.63-.05.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.9.91.28.15.46.22.53.34.07.13.07.72-.17 1.41z"/></svg>
+        DM "TRANSFORM" on WhatsApp
+      </a>
+      <span class="cta-note">+91 98855 13807</span>
+    </div>
+  </div>
+</header>
+
+<section class="stats" aria-label="Track record">
+  <div class="wrap">
+    <div class="stat">
+      <div class="stat-num" data-count="300"><span class="count">0</span><span class="suffix">+</span></div>
+      <div class="stat-label">Client transformations</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" data-count="2"><span class="count">0</span></div>
+      <div class="stat-label">Coaching certifications (GGFI + NCVET)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" data-count="100"><span class="count">0</span><span class="suffix">%</span></div>
+      <div class="stat-label">Personalized — no generic plans</div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <div class="kicker">The Coach</div>
+      <h2 class="section-title display" style="font-size:clamp(26px,3.5vw,38px); margin-bottom:20px;">Built for people with a job, a routine, and a real life.</h2>
+      <p>I'm a <strong>Gold's Gym Certified Fitness Coach (GGFI)</strong>, an <strong>NCVET Certified Trainer</strong>, and a nutritionist. Over the last several years I've worked with 300+ clients on fat loss, muscle gain, and strength — and every single plan starts from where that person actually is, not a template.</p>
+      <p>My approach isn't about quick fixes or extreme dieting. It's about building a strong, healthy, confident lifestyle you can actually keep. I coach working professionals, complete beginners, and women who want to change their physique while managing a packed schedule — online or in person.</p>
+    </div>
+    <div class="cred-list">
+      <div class="cred-item"><span>Gold's Gym Certified Fitness Coach</span><span class="tag">GGFI</span></div>
+      <div class="cred-item"><span>Certified Personal Trainer</span><span class="tag">NCVET</span></div>
+      <div class="cred-item"><span>Certified Nutritionist</span><span class="tag">NUTRITION</span></div>
+      <div class="cred-item"><span>Coaching format</span><span class="tag">ONLINE + OFFLINE</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="who">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Who I coach</div>
+      <h2 class="section-title display" style="font-size:clamp(26px,3.5vw,38px);">Three kinds of clients. One standard.</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon">01</div>
+        <h3>Working professionals</h3>
+        <p>Long hours, unpredictable schedules, low energy. Your program is built to fit the week you actually have — not the one a generic plan assumes.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">02</div>
+        <h3>Beginners</h3>
+        <p>New to training or nutrition? You get clear, step-by-step guidance — proper form, realistic targets, no overwhelm.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">03</div>
+        <h3>Women</h3>
+        <p>Training and nutrition strategies built around your goals and your body — strength, physique change, and confidence, done right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="offer">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What's included</div>
+      <h2 class="section-title display" style="font-size:clamp(26px,3.5vw,38px);">Everything you need. Nothing you don't.</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="offer-grid">
+      <div class="offer-item">
+        <div class="offer-num">PROGRAM</div>
+        <h3>Personalized workout programs</h3>
+        <p>Training built around your goal, experience level, equipment access, and schedule — fat loss, muscle gain, or strength.</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-num">NUTRITION</div>
+        <h3>Tailored nutrition guidance</h3>
+        <p>No crash diets. A sustainable eating strategy that fits your lifestyle and actually gets followed.</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-num">RESULTS</div>
+        <h3>Fat loss &amp; muscle-building plans</h3>
+        <p>Structured transformation plans with clear milestones, so progress is visible, not guesswork.</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-num">SUPPORT</div>
+        <h3>Consistency &amp; accountability</h3>
+        <p>Lifestyle coaching and regular check-ins to keep you on track when motivation dips.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">How it works</div>
+      <h2 class="section-title display" style="font-size:clamp(26px,3.5vw,38px);">From first message to first milestone.</h2>
+    </div>
+    <div class="process-list">
+      <div class="process-row">
+        <div class="step-num">01</div>
+        <div><h3>DM "TRANSFORM"</h3><p>Message on WhatsApp and tell me your goal — fat loss, muscle gain, or general fitness.</p></div>
+      </div>
+      <div class="process-row">
+        <div class="step-num">02</div>
+        <div><h3>Free assessment</h3><p>A quick call to understand your current stats, schedule, and what's held you back so far.</p></div>
+      </div>
+      <div class="process-row">
+        <div class="step-num">03</div>
+        <div><h3>Custom program</h3><p>A training and nutrition plan built specifically around your life — online or offline.</p></div>
+      </div>
+      <div class="process-row">
+        <div class="step-num">04</div>
+        <div><h3>Weekly check-ins</h3><p>Regular tracking and adjustments so the plan keeps working as you change.</p></div>
+      </div>
+      <div class="process-row">
+        <div class="step-num">05</div>
+        <div><h3>Sustainable transformation</h3><p>Real results you keep — not a number that bounces back the month after.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="transformations">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Results</div>
+      <h2 class="section-title display" style="font-size:clamp(26px,3.5vw,38px);">Client transformations</h2>
+      <p class="section-desc">Real before/after stories from 300+ clients — added as they come in.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card"><span class="plus">+</span><span class="placeholder-label">Before / after photo</span></div>
+      <div class="gallery-card"><span class="plus">+</span><span class="placeholder-label">Client testimonial</span></div>
+      <div class="gallery-card"><span class="plus">+</span><span class="placeholder-label">Before / after photo</span></div>
+      <div class="gallery-card"><span class="plus">+</span><span class="placeholder-label">Client testimonial</span></div>
+      <div class="gallery-card"><span class="plus">+</span><span class="placeholder-label">Before / after photo</span></div>
+      <div class="gallery-card"><span class="plus">+</span><span class="placeholder-label">Client testimonial</span></div>
+    </div>
+    <div class="gallery-note">To add a real photo: replace a .gallery-card block with &lt;img src="photos/name.jpg" alt="..."&gt;. To add a testimonial: swap the placeholder text for the client's name, result, and quote.</div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2 class="display">READY TO <span class="accent">TRANSFORM</span>?</h2>
+    <p>Send "TRANSFORM" on WhatsApp and get your free assessment call booked.</p>
+    <a class="cta-primary" href="https://wa.me/919885513807?text=TRANSFORM" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.44 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35.19 0 .38.001.55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.77 1.27 1.66 2.05 1.14 1.02 2.11 1.34 2.4 1.49.29.15.46.13.63-.05.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.9.91.28.15.46.22.53.34.07.13.07.72-.17 1.41z"/></svg>
+      DM "TRANSFORM" — +91 98855 13807
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">DINESH NATH COACHING</div>
+    <div class="foot-meta">GGFI &amp; NCVET Certified · Online &amp; Offline · WhatsApp +91 98855 13807</div>
+  </div>
+</footer>
+
+<script>
+  // Animated stat counters, triggered on scroll into view
+  const counters = document.querySelectorAll('.stat-num');
+  const animateCount = (el) => {
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    const countEl = el.querySelector('.count');
+    const duration = 900;
+    const start = performance.now();
+    function tick(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      countEl.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(tick);
+      else countEl.textContent = target;
+    }
+    requestAnimationFrame(tick);
+  };
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if ('IntersectionObserver' in window && !prefersReducedMotion) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(el => observer.observe(el));
+  } else {
+    counters.forEach(el => {
+      el.querySelector('.count').textContent = el.getAttribute('data-count');
+    });
+  }
+</script>
+
+</body>
+</html>
