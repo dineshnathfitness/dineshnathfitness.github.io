@@ -329,17 +329,76 @@
   .pillar-card h3{font-size:20px; margin-bottom:8px; letter-spacing:0.02em; text-transform:uppercase;}
   .pillar-card p{font-size:14px; color:var(--iron);}
 
-  /* ============ STATS ============ */
-  .stats{border-bottom:1px solid var(--line); background:var(--bg-elevated);}
-  .stats .wrap{display:grid; grid-template-columns:repeat(3,1fr); padding:40px 28px;}
-  .stat{text-align:left; padding:0 20px; border-left:1px solid var(--line);}
-  .stat:first-child{border-left:none; padding-left:0;}
+  /* ============ TRUST & STATISTICS ============ */
+  .trust{
+    position:relative; overflow:hidden;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--bg-elevated);
+    padding:72px 0;
+  }
+  .trust::before{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse 760px 320px at 50% -12%, rgba(218,146,28,0.10), transparent 70%);
+  }
+  .trust .wrap{position:relative;}
+
+  .trust-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .trust-card{
+    text-align:center; padding:36px 22px;
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:linear-gradient(180deg, rgba(243,240,232,0.03), transparent);
+    transition:transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .trust-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(218,146,28,0.45);
+    box-shadow:0 20px 44px -24px rgba(218,146,28,0.4);
+  }
+  .trust-icon{
+    width:56px; height:56px; margin:0 auto 20px; border-radius:50%;
+    border:1.5px solid var(--gold); color:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    transition:background 0.3s ease, color 0.3s ease;
+  }
+  .trust-icon svg{width:24px; height:24px;}
+  .trust-card:hover .trust-icon{background:var(--gold); color:#0A0A09;}
+
   .stat-num{
-    font-family:'Cambria', Georgia, serif; font-size:clamp(32px,4vw,48px);
-    font-weight:600; color:var(--text); display:flex; align-items:baseline; gap:2px;
+    font-family:'Anton', 'Cambria', Georgia, serif; text-transform:uppercase;
+    font-size:clamp(36px,4.4vw,52px); font-weight:400; line-height:1;
+    color:var(--text); display:flex; align-items:baseline; justify-content:center; gap:2px;
   }
   .stat-num .suffix{color:var(--gold);}
-  .stat-label{font-size:13px; color:var(--iron); text-transform:uppercase; letter-spacing:0.04em; margin-top:6px; font-weight:600;}
+  .stat-label{font-size:13px; color:var(--iron); text-transform:uppercase; letter-spacing:0.05em; margin-top:12px; font-weight:600;}
+
+  .trust-divider{
+    height:1px; margin:52px 0 40px;
+    background:linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent);
+  }
+
+  .trust-creds-label{
+    text-align:center; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--iron-light); margin-bottom:22px; font-weight:700;
+  }
+  .trust-creds-row{
+    list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap:14px;
+  }
+  .cred-badge{
+    display:flex; align-items:center; gap:10px;
+    border:1px solid var(--iron-light); border-radius:999px;
+    padding:9px 18px 9px 10px;
+    transition:border-color 0.25s ease, background 0.25s ease;
+  }
+  .cred-badge:hover, .cred-badge:focus-visible{border-color:var(--gold); background:rgba(218,146,28,0.07);}
+  .cred-icon{
+    width:30px; height:30px; border-radius:50%; flex-shrink:0;
+    background:rgba(218,146,28,0.12); color:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cred-icon svg{width:16px; height:16px;}
+  .cred-text{display:flex; flex-direction:column; line-height:1.3; text-align:left;}
+  .cred-text strong{font-size:12.5px; letter-spacing:0.02em; text-transform:uppercase; color:var(--text); font-weight:700;}
+  .cred-text span{font-size:11px; color:var(--iron);}
 
   /* ============ SECTION GENERIC ============ */
   section{padding:88px 0;}
@@ -435,9 +494,7 @@
     .who-grid{grid-template-columns:1fr;}
     .offer-grid{grid-template-columns:1fr;}
     .pillars-grid{grid-template-columns:1fr; gap:32px;}
-    .stats .wrap{grid-template-columns:1fr; gap:20px;}
-    .stat{border-left:none; padding-left:0; border-bottom:1px solid var(--line); padding-bottom:20px;}
-    .stat:last-child{border-bottom:none;}
+    .trust-grid{grid-template-columns:1fr; gap:16px;}
     .hero{padding:100px 0 72px;}
     .hero-grid{grid-template-columns:1fr; gap:56px;}
     .hero-copy{max-width:none;}
@@ -584,19 +641,50 @@
   </div>
 </section>
 
-<section class="stats reveal" aria-label="Track record">
+<section class="trust reveal" id="trust" aria-label="Track record and certifications">
   <div class="wrap">
-    <div class="stat">
-      <div class="stat-num" data-count="300"><span class="count">0</span><span class="suffix">+</span></div>
-      <div class="stat-label">Client transformations</div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-num" data-count="300"><span class="count">0</span><span class="suffix">+</span></div>
+        <div class="stat-label">Client Transformations</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-num" data-count="7"><span class="count">0</span></div>
+        <div class="stat-label">Professional Certifications</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.6 5.5-5.6s5.5 2.3 5.5 5.6" stroke-linecap="round"/><path d="M16.3 12.5l1.8 1.8 3.2-3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-num" data-count="100"><span class="count">0</span><span class="suffix">%</span></div>
+        <div class="stat-label">Personalized — No Generic Plans</div>
+      </div>
     </div>
-    <div class="stat">
-      <div class="stat-num" data-count="7"><span class="count">0</span></div>
-      <div class="stat-label">Professional certifications</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" data-count="100"><span class="count">0</span><span class="suffix">%</span></div>
-      <div class="stat-label">Personalized — no generic plans</div>
+
+    <div class="trust-divider" aria-hidden="true"></div>
+
+    <div class="trust-creds">
+      <p class="trust-creds-label">Certified &amp; Accredited</p>
+      <ul class="trust-creds-row">
+        <li class="cred-badge">
+          <span class="cred-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="9" width="3" height="6" rx="1"/><rect x="19" y="9" width="3" height="6" rx="1"/><rect x="7" y="10.3" width="3" height="3.4" rx="0.6"/><rect x="14" y="10.3" width="3" height="3.4" rx="0.6"/><path d="M10 12h4" stroke-linecap="round"/></svg></span>
+          <span class="cred-text"><strong>GGFI Certified</strong><span>Gold's Gym Fitness Institute</span></span>
+        </li>
+        <li class="cred-badge">
+          <span class="cred-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="cred-text"><strong>NCVET Certified</strong><span>National Council for Vocational Education &amp; Training</span></span>
+        </li>
+        <li class="cred-badge">
+          <span class="cred-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l2-5 3 10 2-7 2 4h5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="cred-text"><strong>CPR &amp; AED Certified</strong><span>Australian Lifesaving Academy NSW</span></span>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
