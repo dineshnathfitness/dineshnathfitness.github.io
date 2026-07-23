@@ -846,6 +846,45 @@
   .video-testimonial-program{font-size:13px; color:var(--gold); font-weight:600; margin-bottom:12px;}
   .video-testimonial-desc{font-size:14.5px; line-height:1.65; color:var(--iron);}
 
+  /* ============ FAQ ============ */
+  .faq{border-bottom:1px solid var(--line); padding-top:96px; padding-bottom:96px;}
+  .faq-list{max-width:820px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item:first-child{border-top:1px solid var(--line);}
+  .faq-item h3{margin:0; font-weight:inherit;}
+
+  .faq-question{
+    width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px;
+    background:none; border:none; cursor:pointer; text-align:left;
+    padding:24px 4px; font-family:'Cambria', Georgia, serif; font-size:17px; font-weight:700;
+    color:var(--text); transition:color 0.25s ease;
+  }
+  .faq-question:hover{color:var(--gold);}
+  .faq-question:focus-visible{outline:2px solid var(--gold); outline-offset:4px; border-radius:1px;}
+
+  .faq-icon{
+    flex-shrink:0; width:32px; height:32px; border-radius:50%;
+    border:1.5px solid var(--gold); color:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform 0.35s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  .faq-icon svg{width:14px; height:14px;}
+  .faq-question:hover .faq-icon{border-color:var(--gold-bright);}
+  .faq-item.is-open .faq-icon{background:var(--gold); color:#0A0A09; transform:rotate(180deg);}
+
+  .faq-answer{
+    display:grid; grid-template-rows:0fr;
+    transition:grid-template-rows 0.4s ease;
+  }
+  .faq-item.is-open .faq-answer{grid-template-rows:1fr;}
+  .faq-answer-inner{overflow:hidden;}
+  .faq-answer-inner p{padding:0 40px 24px 4px; color:var(--iron); font-size:15px; line-height:1.75;}
+
+  @media (prefers-reduced-motion: reduce){
+    .faq-answer{transition:none;}
+    .faq-icon{transition:background 0.2s ease, color 0.2s ease;}
+  }
+
   /* ============ WHO I COACH ============ */
   .who{background:var(--bg-elevated); border-bottom:1px solid var(--line);}
   .who-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
@@ -1000,6 +1039,10 @@
     .testimonials{padding-top:56px; padding-bottom:56px;}
     .testimonials-grid{grid-template-columns:1fr;}
     .video-testimonial{padding:22px;}
+    .faq{padding-top:56px; padding-bottom:56px;}
+    .faq-question{padding:18px 4px; font-size:15.5px; gap:14px;}
+    .faq-answer-inner p{padding:0 8px 20px 4px; font-size:14px;}
+    .faq-icon{width:28px; height:28px;}
     .hero{padding:64px 0 56px;}
     .wrap{padding:0 18px;}
     nav .wrap{height:68px;}
@@ -1783,6 +1826,186 @@
   </div>
 </section>
 
+<section class="faq reveal" id="faq" aria-labelledby="faq-heading">
+  <div class="wrap">
+    <div class="programs-header">
+      <div class="kicker">FAQ</div>
+      <h2 id="faq-heading" class="programs-title display">Questions, Answered.</h2>
+      <p class="programs-desc">Everything you need to know before booking your free assessment. Can't find your answer here? Send it straight over on WhatsApp.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item is-open">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-1" aria-expanded="true" aria-controls="faq-a-1">
+            How does online coaching work?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-1" role="region" aria-labelledby="faq-q-1">
+          <div class="faq-answer-inner">
+            <p>You get a personalized training and nutrition plan built around your schedule, delivered and tracked through WhatsApp. We stay in touch with regular check-ins, you send form videos when needed, and your plan gets adjusted as you progress &mdash; all without needing to step into the same room.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2">
+            Is this program suitable for beginners?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-2" role="region" aria-labelledby="faq-q-2" hidden>
+          <div class="faq-answer-inner">
+            <p>Yes &mdash; every plan starts from where you actually are, not where a template assumes you should be. If you've never trained before, your first weeks will look completely different from someone who's been lifting for years.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3">
+            Do I need access to a gym?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-3" role="region" aria-labelledby="faq-q-3" hidden>
+          <div class="faq-answer-inner">
+            <p>Not necessarily. Your program is built around whatever you have access to &mdash; a full gym, a home setup with limited equipment, or a hybrid of both. We'll talk through what's available to you on the assessment call.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4">
+            Will I receive a nutrition plan?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-4" role="region" aria-labelledby="faq-q-4" hidden>
+          <div class="faq-answer-inner">
+            <p>Yes. Nutrition guidance is part of every program &mdash; built around food you actually like and can stick to, not a rigid meal plan copy-pasted from someone else's diet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5">
+            How often will we communicate?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-5" role="region" aria-labelledby="faq-q-5" hidden>
+          <div class="faq-answer-inner">
+            <p>You'll have weekly check-ins to review progress and adjust your plan, plus WhatsApp support in between for questions, form checks, or when life throws your week off track.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6">
+            How long before I see results?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-6" role="region" aria-labelledby="faq-q-6" hidden>
+          <div class="faq-answer-inner">
+            <p>It varies by person, starting point, and consistency. Most clients notice changes in energy and strength within the first few weeks, with visible physical changes building steadily over the following months. There's no shortcut version of this answer &mdash; sustainable results take sustained effort.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7">
+            Can you help with weight loss and muscle gain?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-7" role="region" aria-labelledby="faq-q-7" hidden>
+          <div class="faq-answer-inner">
+            <p>Yes, both are core programs &mdash; fat loss, muscle gain, and general strength coaching. If your goals overlap (like recomposition), your plan is built to reflect that instead of forcing you into one lane.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-8" aria-expanded="false" aria-controls="faq-a-8">
+            What if I miss a workout?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-8" role="region" aria-labelledby="faq-q-8" hidden>
+          <div class="faq-answer-inner">
+            <p>Life happens &mdash; one missed session isn't going to undo your progress. We adjust the week around it rather than treating it as a failure. The goal is a plan you can sustain, not a perfect streak you're afraid to break.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-9" aria-expanded="false" aria-controls="faq-a-9">
+            Is there a fixed coaching duration?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-9" role="region" aria-labelledby="faq-q-9" hidden>
+          <div class="faq-answer-inner">
+            <p>No single fixed term &mdash; coaching length depends on your goals. Some clients commit for a few months to hit a specific target, others stay on longer for ongoing accountability. We'll recommend a realistic timeframe on your assessment call.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-10" aria-expanded="false" aria-controls="faq-a-10">
+            How do I get started?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-10" role="region" aria-labelledby="faq-q-10" hidden>
+          <div class="faq-answer-inner">
+            <p>Book a free assessment call on WhatsApp. We'll talk through your goals, schedule, and experience, and I'll recommend the coaching plan that fits &mdash; no pressure, no obligation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-11" aria-expanded="false" aria-controls="faq-a-11">
+            Can women join your coaching programs?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-11" role="region" aria-labelledby="faq-q-11" hidden>
+          <div class="faq-answer-inner">
+            <p>Yes &mdash; there's a dedicated Women's Fitness program covering fat loss, strength, toning, and lifestyle coaching, alongside the standard fat loss, muscle gain, and strength tracks if those fit your goals better.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>
+          <button type="button" class="faq-question" id="faq-q-12" aria-expanded="false" aria-controls="faq-a-12">
+            What makes your coaching different?
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq-answer" id="faq-a-12" role="region" aria-labelledby="faq-q-12" hidden>
+          <div class="faq-answer-inner">
+            <p>No cookie-cutter plans and no extreme rules. Every program is built around your actual job, schedule, and history, backed by science rather than trends, with a real person checking in on you every week &mdash; not an app running on autopilot.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="who reveal reveal-left">
   <div class="wrap">
     <div class="section-head">
@@ -2158,6 +2381,44 @@
 
     btn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    });
+  })();
+
+  /* ============ FAQ ACCORDION ============ */
+  (function(){
+    const items = document.querySelectorAll('.faq-item');
+    if (!items.length) return;
+
+    items.forEach(item => {
+      const btn = item.querySelector('.faq-question');
+      const panel = item.querySelector('.faq-answer');
+      if (!btn || !panel) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+        btn.setAttribute('aria-expanded', String(!isOpen));
+
+        if (isOpen) {
+          // Closing: play the collapse transition, then hide from assistive tech
+          // once it finishes (can't transition to/from display:none directly).
+          item.classList.remove('is-open');
+          if (prefersReducedMotion) {
+            panel.hidden = true;
+          } else {
+            panel.addEventListener('transitionend', function onEnd(e){
+              if (e.propertyName !== 'grid-template-rows') return;
+              panel.removeEventListener('transitionend', onEnd);
+              if (!item.classList.contains('is-open')) panel.hidden = true;
+            });
+          }
+        } else {
+          // Opening: remove hidden first and force a reflow so the browser
+          // registers the collapsed (0fr) state before animating to 1fr.
+          panel.hidden = false;
+          void panel.offsetHeight;
+          item.classList.add('is-open');
+        }
+      });
     });
   })();
 
